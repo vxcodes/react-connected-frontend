@@ -1,25 +1,24 @@
 import React from 'react';
 import { login, logout } from '../../services/firebase';
-import styles from './Header.module.css';
+import styles from './Nav.module.css';
 
-
-function Header(props){
+function Nav (props) {
     return (
         <header className={styles.header}>
             <h1>{'⚛︎'} React Connected</h1>
             <nav>
                 <ul>
                     <li>Welcome, User</li>
-                    <li>IMG</li>
+                    <li className={styles.navLink}>
+                        Home
+                    </li>
+                    <li className={styles.navLink}>
+                        Profile
+                    </li>
                     <li 
                         className={styles.navLink}
                         onClick={logout}>
                         Logout
-                    </li>
-                    <li 
-                        className={styles.navLink}
-                        onClick={login}>
-                        Login
                     </li>
                 </ul>
             </nav>
@@ -27,4 +26,4 @@ function Header(props){
     )
 }
 
-export default Header;
+export default Nav;

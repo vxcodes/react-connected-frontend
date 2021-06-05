@@ -3,6 +3,7 @@ import { auth } from './services/firebase'
 import "./App.css";
 
 import Header from './components/Header/Header'
+import Login from './pages/Login/Login'
 
 export default function App() {
   const [postState, setPost] = useState({
@@ -69,7 +70,7 @@ export default function App() {
 
   return (
     <>
-    <Header />
+    <Login />
       <section>
         <hr />
         {postState.posts.map((p, i) =>(
