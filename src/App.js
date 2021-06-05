@@ -1,24 +1,50 @@
 import { useState, useEffect } from "react";
+import { auth } from './services/firebase'
 import "./App.css";
 
 import Header from './components/Header/Header'
 
 export default function App() {
   const [postState, setPost] = useState({
-    posts: [{post: "Hello World"}]
+    posts: [{post: "Hello World"}],
+    newPost: {
+      post: "",
+      content: ""
+    },
   });
 
   useEffect(function(){
-    function getAppData(){
-      fetch('http://localhost:3001/api/posts')
-      .then(response => response.json())
-      .then(data => postState(prevState => ({
-        posts: data,
-        ...prevState
-      })));
+    async function getAppData(){
+      const posts = await fetch('http://localhost:3001/api/posts')
+      .then(res => res.json());
+
+      setPost(prevState => ({
+        ...prevState,
+        posts
+      }));
     }
 
     getAppData();
+  
+  }, []);
+
+  async function handleSumbit(e) {
+    e.preventDefault();
+    fetch('http://localhost:3001/api/posts', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'Application/json'
+      },
+      body: JSON.stringify(postState.newPost)
+    }).then(res => res.json())
+
+    setPost({
+      posts: [...postState.posts],
+      newPost: {
+        post: ""
+      }
+    });
+  }
 
     function addPost(e) {
       e.preventDefault();
@@ -30,7 +56,16 @@ export default function App() {
       });
     }
 
-  }, []);
+    function handleChange(e) {
+      setPost(prevState => ({
+        posts: prevState.posts,
+        newPost: {
+          ...prevState.newPost,
+          [e.target.name]: e.target.value
+        }
+      }));
+    }
+
 
   return (
     <>
@@ -42,12 +77,13 @@ export default function App() {
             <div>{p.post}</div>
           </article>
         ))}
-        <form>
+        <form onSubmit={handleSumbit}>
           <label>
             <span>POST</span>
-            <input name="post" />
+            <input name="post" value={postState.newPost.post} onChange={handleChange}/>
           </label>
         </form>
+        <button value="submit">submit</button>
       </section>
     </>
 
