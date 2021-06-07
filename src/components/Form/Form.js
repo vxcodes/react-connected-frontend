@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { TextField, Button, Typography, Paper } from '@material-ui/core'
+import {createSkill, fetchSkills} from '../../services/post-service'
+
 import FileBase from 'react-file-base64'
 
 import useStyles from './styles'
@@ -8,6 +10,21 @@ import useStyles from './styles'
 function Form(props){
     const [postData, setPostData] = useState({userName: '', title: '', post: ''})
     const classes = useStyles();
+
+    useEffect(function(){
+        async function getAppData(){
+          const posts = await fetch('http://localhost:3001/api/posts')
+          .then(res => res.json());
+    
+          setPostData(prevState => ({
+            ...prevState,
+            posts
+          }));
+        }
+    
+      getAppData();
+      
+    }, []);
     
     async function handleSumbit(e) {
         e.preventDefault();
@@ -22,7 +39,9 @@ function Form(props){
         setPostData({
           posts: [...postData.posts],
           newPost: {
-            post: ""
+            userName: "",
+            title: "",
+            post: "",
           }
         });
     }

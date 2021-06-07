@@ -35,23 +35,6 @@ export default function App() {
   
   }, []);
 
-  // async function handleSumbit(e) {
-  //   e.preventDefault();
-  //   fetch('http://localhost:3001/api/posts', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-type': 'Application/json'
-  //     },
-  //     body: JSON.stringify(postState.newPost)
-  //   }).then(res => res.json())
-
-  //   setPost({
-  //     posts: [...postState.posts],
-  //     newPost: {
-  //       post: ""
-  //     }
-  //   });
-  // }
 
     function addPost(e) {
       e.preventDefault();
@@ -79,9 +62,8 @@ export default function App() {
       <Login />
       <Container maxidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography className={classes.heading} variant="h2" align="center">Memories
+          <Typography className={classes.heading} variant="h2" align="center">POSTS
           </Typography>
-          <img className={classes.image} src="" alt="memories" height="60" />
         </AppBar>
         <Grow in>
           <Container>
