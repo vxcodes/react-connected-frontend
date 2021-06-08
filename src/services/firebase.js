@@ -12,20 +12,25 @@ const config = {
 
 firebase.initializeApp(config);
 
-// TODO: set up a provider ...Google, Facebook, Github
+// Set up a provider ...Google, Facebook, Github
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-// TODO: Set up auth functions
+// Reference to firebase auth
+
+const auth = firebase.auth();
+
+// Set up auth functions
 function login() {
-    firebase.auth().signInWithPopup(googleProvider);
+    auth.signInWithPopup(googleProvider);
 }
 
 function logout() {
-    firebase.auth().signOut();
+    auth.signOut();
 }
 
-// TODO: Export auth functions
+// Export auth functions
 export {
     login,
-    logout
+    logout,
+    auth
 }
