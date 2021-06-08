@@ -4,6 +4,8 @@ import styles from './Header.module.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../../pages/Home/Home'
 
+// use 'rfc' extension keyword
+
 
 function Header(props){
     // async function onSubmit(){
@@ -39,3 +41,5 @@ function Header(props){
 }
 
 export default Header;
+
+
