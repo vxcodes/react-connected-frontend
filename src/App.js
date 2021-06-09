@@ -85,7 +85,7 @@ export default function App() {
     }
   }
 
-  function handleChange(e){
+  async function handleChange(e){
     setPost(prevState => ({
       ...prevState,
       newPost: {
@@ -95,7 +95,8 @@ export default function App() {
     }));
   }
 
-  function handleEdit(id){
+  async function handleEdit(id){
+    if(!userState.user) return;
     const postToEdit = postState.posts.find(post => post._id === id);
     setPost(prevState => ({
       ...prevState,
@@ -105,6 +106,7 @@ export default function App() {
   }
 
   async function handleDelete(id){
+    if(!userState.user) return;
     try{
       const posts = await deletePost(id, userState.user);
       setPost(prevState => ({
@@ -122,17 +124,17 @@ export default function App() {
       <section>
         {userState.user ? postState.posts.map((p, i) => (
           <article key={i}>
-            <div>p.userName</div>
-            <div>p.title</div>
-            <div>p.post</div>
-            <div className="controls"
+            <div>{p.userName}</div>
+            <div>{p.title}</div>
+            <div>{p.post}</div>
+            <button className="controls"
             onClick={() => handleEdit(p._id)}>
               {'📝'}
-            </div>
-            <div className="controls"
+            </button>
+            <button className="controls"
             onClick={() => handleDelete(p._id)}>
               {'🗑'}
-            </div>
+            </button>
           </article>
         )) : 
           <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>
