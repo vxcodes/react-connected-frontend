@@ -122,25 +122,7 @@ export default function App() {
     <>
       <Login user={userState.user}/>
       <section>
-        {userState.user ? postState.posts.map((p, i) => (
-          <article key={i}>
-            <div>{p.userName}</div>
-            <div>{p.title}</div>
-            <div>{p.post}</div>
-            <button className="controls"
-            onClick={() => handleEdit(p._id)}>
-              {'📝'}
-            </button>
-            <button className="controls"
-            onClick={() => handleDelete(p._id)}>
-              {'🗑'}
-            </button>
-          </article>
-        )) : 
-          <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>
-        }
-        <hr />
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
           <label>
             <span>USER NAME</span>
             <input name="userName" value={postState.newPost.userName} onChange={handleChange} />
@@ -155,6 +137,27 @@ export default function App() {
           </label>
           <button disabled={!userState.user}>{postState.editMode ? 'EDIT POST' : 'ADD POST'}</button>
         </form>
+
+        {userState.user ? postState.posts.map((p, i) => (
+          <article key={i}>
+            <Post 
+              userName={p.userName}
+              title={p.title}
+              post={p.post}
+            />
+            <button className="controls"
+            onClick={() => handleEdit(p._id)}>
+              {'📝'}
+            </button>
+            <button className="controls"
+            onClick={() => handleDelete(p._id)}>
+              {'🗑'}
+            </button>
+          </article>
+        )) : 
+          <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>
+        }
+        <hr />
       </section>
 
 

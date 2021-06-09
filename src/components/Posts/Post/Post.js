@@ -1,16 +1,18 @@
 import React from 'react'
 
+
 function Post(props) {
+
     return (
         <>
             <h1>POST</h1>
-            <p>name={this.props.userName}</p>
+            <p>{props.title}</p>
             <br />
             <hr />
-            <p>title={this.props.title}</p>
+            <p>{props.userName}</p>
             <br />
             <hr />
-            <p>post={this.props.post}</p>
+            <p>{props.post}</p>
             <br />
             <hr />
         </>
