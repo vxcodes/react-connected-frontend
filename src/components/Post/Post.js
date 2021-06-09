@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from './Post.module.css'
 
 
 function Post(props) {
 
     return (
         <>
-            <h1>POST</h1>
+            <h1 className={styles.heading}>POST</h1>
             <p>{props.title}</p>
             <br />
             <hr />

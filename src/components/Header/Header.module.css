@@ -1,3 +1,7 @@
+.headinglogo{
+    background-image: url('../images/connected-logo.png')
+}
+
 .header {
     display: flex;
     justify-content: space-between;

@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { auth } from './services/firebase'
 import { BrowserRouter } from 'react-router-dom'
-import Posts from './components/Posts/Posts'
-import Post from './components/Posts/Post/Post'
+import Post from './components/Post/Post'
 import Form from './components/Form/Form'
 import { 
   fetchPosts,
