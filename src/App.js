@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { auth } from './services/firebase'
 import { BrowserRouter } from 'react-router-dom'
+import Home from './pages/Home/Home'
+import Profile from './pages/Profile/Profile'
 import Post from './components/Post/Post'
 import Form from './components/Form/Form'
 import { 
@@ -158,21 +160,9 @@ export default function App() {
         }
         <hr />
       </section>
+      < Home />
+      < Profile />
 
-
-
-      {/* <div>
-        <div container justify="space-between" alignItems="stretch" spacing={3}>
-          <div item xs={12} sm={7}>
-            {postState.posts.map((post, idx) => {
-              < Post key={idx} post={post} />
-            })}
-          </div>
-          <div item xs={12} sm={4}>
-            <Form />
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }

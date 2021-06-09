@@ -3,6 +3,7 @@ import { login, logout } from '../../services/firebase';
 import styles from './Header.module.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../../pages/Home/Home'
+import Profile from '../../pages/Profile/Profile'
 
 // use 'rfc' extension keyword
 
@@ -19,6 +20,18 @@ function Header(props){
                 <Switch>
                     <nav>
                         <ul>
+                            <Route
+                                path="/home"
+                                exact
+                                className={styles.navLink}
+                                component={Home}
+                            />
+                            <Route
+                                path="/profile"
+                                exact
+                                className={styles.navLink}
+                                component={Profile}
+                            />
                             <li>Welcome, User</li>
                             <li>IMG</li>
                             <li 
