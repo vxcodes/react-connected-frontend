@@ -10,6 +10,8 @@
     height: 300px;
     width: 200px;
     border-style: solid;
+    position: relative;
+    left: 30px
 }
 
 .followingbox {
@@ -17,4 +19,7 @@
     height: 300px;
     width: 200px;
     border-style: solid;
+    position: relative;
+    left: 30px;
+    bottom: 10px;
 }

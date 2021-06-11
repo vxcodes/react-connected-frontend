@@ -143,7 +143,7 @@ export default function App() {
         {userState.user ? postState.posts.map((p, i) => (
           <article key={i}>
             <Post 
-              post={p.post}
+              post={p.post} comments={p.comments}
             />
             <button className="controls"
             onClick={() => handleEdit(p._id)}>
@@ -153,7 +153,13 @@ export default function App() {
             onClick={() => handleDelete(p._id)}>
               {'🗑'}
             </button>
+            <form className="add-comment-form" method="POST" action="#">
+              <label>Comment:</label>
+              <textarea name="content"></textarea>
+              <input type="submit" value="Add Comment" />
+            </form>
           </article>
+          
         )) : 
           <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>
         }

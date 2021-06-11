@@ -23,6 +23,13 @@ async function updatePost({ post, _id }, user) {
       }).then(res => res.json());
 }
 
+async function createComment(data){
+  return(BASE_URL, {
+    method: 'POST',
+    body: JSON.stringify({...data})
+  }).then(res => res.json())
+}
+
 async function createPost(data, user) {
     const token = await user.getIdToken();
     return fetch(BASE_URL, {
@@ -52,5 +59,6 @@ export {
     fetchPosts,
     updatePost,
     createPost,
-    deletePost
+    deletePost,
+    createComment,
 }

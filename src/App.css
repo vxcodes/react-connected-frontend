@@ -27,6 +27,15 @@ section{
 .controls{
   display: inline;
   margin-left: 50%;
+  position: relative;
+  top: -950px;
+  right: -200px;
 }
 
 
+.add-comment-form{
+  display: inline;
+  position: relative;
+  right: 250px;
+  top: -900px;
+}
