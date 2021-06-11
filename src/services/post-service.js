@@ -4,8 +4,6 @@ const BASE_URL = 'http://localhost:3001/api/posts';
 
 async function fetchPosts(user) {
     return fetch(BASE_URL, {
-      headers: {
-      }
     }).then(res => res.json());
 }
 
