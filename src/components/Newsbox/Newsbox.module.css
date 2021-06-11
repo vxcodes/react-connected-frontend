@@ -1,0 +1,10 @@
+
+.newsbox {
+    font-size: small;
+    height: 300px;
+    width: 200px;
+    border-style: solid;
+    position: relative;
+    right: -1200px;
+    top: -600px;
+}
