@@ -47,7 +47,14 @@ export default function App() {
 
     getAppData();
     // Set up authentication observer
-    auth.onAuthStateChanged(user => setUserState({ user }));
+    const unsubscribe = auth.onAuthStateChanged(user => setUserState({ user }));
+
+    // clean up function
+    return function() {
+      //clean up subscriptions
+      unsubscribe();
+
+    }
   
   }, []);
 
@@ -77,8 +84,6 @@ export default function App() {
         setPost({
           posts: [...postState.posts, post],
           newPost: {
-            userName: '',
-            title: '',
             post: '',
           }
         });
