@@ -136,15 +136,6 @@ export default function App() {
       <section>
       <form class="post-form" onSubmit={handleSubmit}>
           <label>
-            {/* <span>USER NAME</span>
-            <input name="userName" value={postState.newPost.userName} onChange={handleChange} />
-          </label>
-          <label>
-            <span>TITLE</span>
-            <input name="title" value={postState.newPost.title} onChange={handleChange} />
-          </label>
-          <label> */}
-            {/* <span></span> */}
             <input class="new-post" name="post" value={postState.newPost.post} onChange={handleChange}/>
           </label>
           <button disabled={!userState.user}>{postState.editMode ? 'EDIT POST' : 'POST'}</button>

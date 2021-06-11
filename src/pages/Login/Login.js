@@ -8,15 +8,9 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { render } from '@testing-library/react';
 
 function Login(props) {
-    // async function onSubmit(){
-    //     await fetch(login())
-    //     .then(<Redirect to="/home/"/>)
-    // }
     return(
         <Router>
             <Header />
-            {/* <Route path="/" component={Home}/>
-            <Route path="/profile" component={Profile} /> */}
         </Router>
     )
 }

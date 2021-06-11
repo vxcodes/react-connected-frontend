@@ -9,10 +9,7 @@ import Profile from '../../pages/Profile/Profile'
 
 
 function Header(props){
-    // async function onSubmit(){
-    //     await fetch(login())
-    //     .then(<Redirect from="/" to="/home/"/>)
-    // }
+
     return (
         <header className={styles.header}>
             <h1 className={styles.headinglogo}>{'⚛︎'} React Connected</h1>
