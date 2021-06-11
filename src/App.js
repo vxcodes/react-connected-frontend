@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import { auth } from './services/firebase'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom';
+import Home from './pages/Home/Home'
+import Profile from './pages/Profile/Profile'
 import Post from './components/Post/Post'
-import Form from './components/Form/Form'
+import "./App.css";
+
 import { 
   fetchPosts,
   updatePost,
   createPost,
   deletePost } from "./services/post-service"
-import "./App.css";
+
+
 
 // import Header from './components/Header/Header'
 import Login from './pages/Login/Login'
@@ -119,23 +123,32 @@ export default function App() {
 
   return (
     <>
-      <Login user={userState.user}/>
+      <div className="App">
+        <Router>
+          <Login user={userState.user}/>
+          <Switch>
+            <Route path="/" exact component={Home}/>
+            <Route path="/profile" exact component={Profile}/>
+          </Switch>
+        </Router>
+      </div>
+
       <section>
-      <form onSubmit={handleSubmit}>
+      <form class="post-form" onSubmit={handleSubmit}>
           <label>
-            <span>USER NAME</span>
+            {/* <span>USER NAME</span>
             <input name="userName" value={postState.newPost.userName} onChange={handleChange} />
           </label>
           <label>
             <span>TITLE</span>
             <input name="title" value={postState.newPost.title} onChange={handleChange} />
           </label>
-          <label>
-            <span>POST</span>
-            <input name="post" value={postState.newPost.post} onChange={handleChange} />
+          <label> */}
+            {/* <span></span> */}
+            <input class="new-post" name="post" value={postState.newPost.post} onChange={handleChange}/>
           </label>
-          <button disabled={!userState.user}>{postState.editMode ? 'EDIT POST' : 'ADD POST'}</button>
-        </form>
+          <button disabled={!userState.user}>{postState.editMode ? 'EDIT POST' : 'POST'}</button>
+      </form>
 
         {userState.user ? postState.posts.map((p, i) => (
           <article key={i}>
@@ -159,20 +172,6 @@ export default function App() {
         <hr />
       </section>
 
-
-
-      {/* <div>
-        <div container justify="space-between" alignItems="stretch" spacing={3}>
-          <div item xs={12} sm={7}>
-            {postState.posts.map((post, idx) => {
-              < Post key={idx} post={post} />
-            })}
-          </div>
-          <div item xs={12} sm={4}>
-            <Form />
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }
