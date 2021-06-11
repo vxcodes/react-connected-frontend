@@ -6,10 +6,9 @@ function Post(props) {
 
     return (
         <>
-            <h1 className={styles.heading}></h1>
-            <p>{props.post}</p>
-            <br />
-            <hr />
+            <div className={styles.postbox}>
+                <p className={styles.post}>{props.post}</p>
+            </div>
         </>
 
     )

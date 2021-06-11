@@ -132,8 +132,7 @@ export default function App() {
           </Switch>
         </Router>
       </div>
-
-      <section>
+     <section>
       <form class="post-form" onSubmit={handleSubmit}>
           <label>
             <input class="new-post" name="post" value={postState.newPost.post} onChange={handleChange}/>
@@ -144,8 +143,6 @@ export default function App() {
         {userState.user ? postState.posts.map((p, i) => (
           <article key={i}>
             <Post 
-              userName={p.userName}
-              title={p.title}
               post={p.post}
             />
             <button className="controls"
@@ -161,7 +158,7 @@ export default function App() {
           <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>
         }
         <hr />
-      </section>
+      </section> 
 
     </>
   );

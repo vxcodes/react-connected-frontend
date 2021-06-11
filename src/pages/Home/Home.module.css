@@ -1,0 +1,9 @@
+.heading {
+    text-align: center;
+    position: relative;
+}
+
+.sidebar{
+    height: 100px;
+    width: 100px;
+}

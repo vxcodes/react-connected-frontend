@@ -4,3 +4,17 @@
     font-size: 14px;
     color: hotpink;
 }
+
+.post {
+    position: relative;
+    padding-left: 475px;
+    height: 40px;
+    width: 500px;;
+}
+
+.postBox {
+    position: relative;
+    height: 40px;
+    width: 500px;
+    border-color: grey;
+}
