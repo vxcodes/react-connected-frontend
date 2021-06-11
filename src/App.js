@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-ro
 import Home from './pages/Home/Home'
 import Profile from './pages/Profile/Profile'
 import Post from './components/Post/Post'
+import Header from './components/Header/Header'
 import "./App.css";
 
 import { 
@@ -125,7 +126,7 @@ export default function App() {
     <>
       <div className="App">
         <Router>
-          <Login user={userState.user}/>
+          <Header user={userState.user}/>
           <Switch>
             <Route path="/" exact component={Home}/>
             <Route path="/profile" exact component={Profile}/>

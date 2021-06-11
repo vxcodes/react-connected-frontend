@@ -15,24 +15,36 @@ function Header(props){
             <h1 className={styles.headinglogo}>{'⚛︎'} React Connected</h1>
              <nav>
                 <ul>
-                    <Link className={styles.navLink} to="/">
-                        <li>Home</li>
-                    </Link>
-                    <Link className={styles.navLink} to="/profile">
-                        <li>Profile</li>
-                    </Link>
-                    <li>Welcome, User</li>
-                    <li>IMG</li>
-                    <li 
-                        className={styles.navLink}
-                        onClick={logout}>
-                        Logout
-                    </li>
-                    <li 
-                        className={styles.navLink}
-                        onClick={login}>
-                        Login
-                    </li>
+                    {
+                        props.user ?
+                        <>
+                        <Link className={styles.navLink} to="/">
+                            <li>Home</li>
+                        </Link>
+                        <Link className={styles.navLink} to="/profile">
+                            <li>Profile</li>
+                        </Link>
+                        <li>Welcome, {props.user.displayName}</li>
+                        <li>
+                            <img
+                                style={{}}
+                                src={props.user.photoUrl}
+                                alt={props.user.displayName} 
+                            />
+                        </li>
+                        <li 
+                            className={styles.navLink}
+                            onClick={logout}>
+                            Logout
+                        </li>
+                        </>
+                        :
+                        <li 
+                            className={styles.navLink}
+                            onClick={login}>
+                            Login
+                        </li>
+                    }
                 </ul>
             </nav>
         </header>
