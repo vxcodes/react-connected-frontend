@@ -5,7 +5,7 @@ export default function Newsbox(props) {
     return (
         <div>
             <div className={styles.newsbox}>
-                <h1>News Box</h1>
+                <h1 className={styles.title}>News Headlines</h1>
                 <div className="form">
                     {
                         props.newsData.results.map(headline => <div class="card"><a href={headline.url}>{headline.title}</a></div>)

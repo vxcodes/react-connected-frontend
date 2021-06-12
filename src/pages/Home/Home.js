@@ -18,11 +18,13 @@ function Home(props) {
         async function getAndSetAppData() {
           const data = await fetch('https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=mGwR13rTsGscWrbPUVcKDaGbflhbVUAi')
           .then(res => res.json())
+          console.log(data)
+
     
           setNews(data)
         }
         getAndSetAppData();
-      })
+      }, [])
 
     return(
         <div>
