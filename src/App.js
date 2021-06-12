@@ -32,6 +32,22 @@ export default function App() {
     user: null
   })
 
+  // const [newsState, setNews] = useState({
+  //   headline: null
+  // })
+
+  // useEffect(function(){
+  //   if(!userState.user) return;
+  //   async function getAndSetAppData() {
+  //     const data = await fetch('https://swapi.dev/api/starships/')
+  //     .then(res => res.json())
+
+  //     console.log(data);
+  //     setNews(data)
+  //   }
+  //   getAndSetAppData();
+  // })
+
   useEffect(function(){
     async function getAppData(){
       if(!userState.user) return;
