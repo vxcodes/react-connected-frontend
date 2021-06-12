@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001/api/posts';
+const BASE_URL = 'https://react-connected-backend.herokuapp.com/api/posts';
 
 
 

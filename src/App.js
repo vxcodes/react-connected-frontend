@@ -36,7 +36,6 @@ export default function App() {
     async function getAppData(){
       if(!userState.user) return;
 
-      const token = await userState.user.getIdToken();
       
       const posts = await fetchPosts(userState.user)
       .then(res => res.json());
@@ -141,9 +140,9 @@ export default function App() {
         </Router>
       </div>
      <section>
-      <form class="post-form" onSubmit={handleSubmit}>
+      <form className="post-form" onSubmit={handleSubmit}>
           <label>
-            <input class="new-post" name="post" value={postState.newPost.post} onChange={handleChange}/>
+            <input className="new-post" name="post" value={postState.newPost.post} onChange={handleChange}/>
           </label>
           <button disabled={!userState.user}>{postState.editMode ? 'EDIT POST' : 'POST'}</button>
       </form>

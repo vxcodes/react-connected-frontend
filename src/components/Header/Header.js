@@ -2,8 +2,8 @@ import React from 'react';
 import { login, logout } from '../../services/firebase';
 import styles from './Header.module.css';
 import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom';
-import Home from '../../pages/Home/Home'
-import Profile from '../../pages/Profile/Profile'
+// import Home from '../../pages/Home/Home'
+// import Profile from '../../pages/Profile/Profile'
 
 // use 'rfc' extension keyword
 
