@@ -3,7 +3,7 @@
     font-size: small;
     height: 1070px;
     width: 300px;
-    border-style: solid;
+    border-style:hidden;
     position: relative;
     right: -1100px;
     top: -600px;
@@ -11,4 +11,9 @@
 
 .title {
     text-align: center;
+}
+
+.form{
+    padding-bottom: 12px;
+    margin-bottom: 2rem;
 }

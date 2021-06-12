@@ -1,4 +1,6 @@
-
+* {
+  font-family:monospace;
+}
 
 section{
   flex-grow: 1;
