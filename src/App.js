@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { auth } from './services/firebase'
-import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home/Home'
 import Profile from './pages/Profile/Profile'
 import Post from './components/Post/Post'
@@ -16,7 +16,7 @@ import {
 
 
 // import Header from './components/Header/Header'
-import Login from './pages/Login/Login'
+
 
 export default function App() {
   const [postState, setPost] = useState({
@@ -35,8 +35,10 @@ export default function App() {
   useEffect(function(){
     async function getAppData(){
       if(!userState.user) return;
+
+      const token = await userState.user.getIdToken();
       
-      const posts = await fetchPosts('http://localhost:3001/api/posts')
+      const posts = await fetchPosts(userState.user)
       .then(res => res.json());
 
       setPost(prevState => ({

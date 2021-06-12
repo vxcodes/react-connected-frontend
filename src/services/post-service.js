@@ -3,8 +3,7 @@ const BASE_URL = 'http://localhost:3001/api/posts';
 
 
 async function fetchPosts(user) {
-    return fetch(BASE_URL, {
-    }).then(res => res.json());
+  return fetch(BASE_URL).then(res => res.json());
 }
 
 async function updatePost({ post, _id }, user) {
