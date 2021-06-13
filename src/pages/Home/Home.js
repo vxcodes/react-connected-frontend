@@ -7,7 +7,6 @@ import Newsbox from '../../components/Newsbox/Newsbox'
 function Home(props) {
 
     const [newsState, setNews] = useState({
-        count: 0,
         next: null,
         previous: null,
         results: []
