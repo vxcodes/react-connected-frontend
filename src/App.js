@@ -133,8 +133,9 @@ export default function App() {
       <div className="App">
         <Router>
           <Header user={userState.user}/>
-          <Switch>
-            <Route path="/" exact component={Home}/>
+          <Switch>       
+            <Route path="/" exact render={props => (<Home {...props} user={userState.user} /> )} />          
+            // {/* <Route path="/" exact component={Home}/> */}
             <Route path="/profile" exact component={Profile}/>
           </Switch>
         </Router>

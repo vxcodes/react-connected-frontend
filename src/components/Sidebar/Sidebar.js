@@ -1,15 +1,30 @@
 import React from 'react'
+import { login, logout } from '../../services/firebase';
 import styles from './Sidebar.module.css'
 
-export default function Sidebar() {
+export default function Sidebar(props) {
     return (
-        <div className={styles.sidebar}>
+        <>
+        {
+            props.user ?
+            <>
             <div className={styles.profilebox}>
                 <h1>Profile Box</h1>
+                <img style={{}} src={props.user.photoUrl} />
             </div>
+
             <div className={styles.followingbox}>
                 <h1>Following Box</h1>
             </div>
-        </div>
+            </>
+            :
+            <li 
+            className={styles.navLink}
+            onClick={login}>
+            Login
+            </li>
+
+        }
+        </>
     )
 }

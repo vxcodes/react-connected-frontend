@@ -32,7 +32,7 @@ function Home(props) {
                 <h1 className={styles.heading}>Homepage</h1>
             
             </div>
-            <Sidebar className={styles.sidebar}/>
+            <Sidebar className={styles.sidebar} user={props.user}/>
             <Newsbox className={styles.newsbox} newsData={newsState}/>
         </div>
 
