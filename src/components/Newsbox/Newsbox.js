@@ -8,7 +8,7 @@ export default function Newsbox(props) {
                 <h1 className={styles.title}>News Headlines</h1>
                 <div>
                     {
-                        props.newsData.results.map(headline => <div className={styles.form} class="card"><a href={headline.url}>{headline.title}</a></div>)
+                        props.newsData.results.map(headline => <div className={styles.form} ><a href={headline.url}>{headline.title}</a></div>)
                     }
                 </div>
             </div>

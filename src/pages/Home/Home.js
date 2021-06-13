@@ -19,6 +19,7 @@ function Home(props) {
           const data = await fetch('https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=mGwR13rTsGscWrbPUVcKDaGbflhbVUAi')
           .then(res => res.json())
 
+
     
           setNews(data)
         }
