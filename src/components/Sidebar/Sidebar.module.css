@@ -1,15 +1,9 @@
-/* .sidebar {
-    font-size: small;
-    height: 500px;
-    width: 200px;
-    border-style: solid;
-} */
 
 .profilebox {
     font-size: small;
     height: 300px;
     width: 200px;
-    border-style: solid;
+    border-style: hidden;
     position: relative;
     left: 30px
 }
@@ -18,7 +12,7 @@
     font-size: small;
     height: 300px;
     width: 200px;
-    border-style: solid;
+    border-style: hidden;
     position: relative;
     left: 30px;
     bottom: 10px;
