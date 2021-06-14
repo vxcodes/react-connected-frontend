@@ -5,7 +5,6 @@ import Home from './pages/Home/Home'
 import Profile from './pages/Profile/Profile'
 import Post from './components/Post/Post'
 import Header from './components/Header/Header'
-import Comments from './components/Comments/Comments'
 import "./App.css";
 
 import { 
@@ -29,6 +28,8 @@ export default function App() {
       }
     }
   });
+
+
 
 
   const [userState, setUserState] = useState({
@@ -70,7 +71,6 @@ export default function App() {
     if(postState.editMode){
       try{
         const posts = await updatePost(postState.newPost, userState.user);
-        // const comments = await updatePost(postState.newComment, userState.user);
         setPost({
           posts,
           editMode: false,
@@ -105,7 +105,12 @@ export default function App() {
     }
   }
 
-
+  async function handleCommentSubmit(e){
+    setPost(prevState => {
+      let comments = {...prevState.comments};
+      comments.comment = 'new';
+    })
+  }
 
 
 
@@ -126,6 +131,7 @@ export default function App() {
 
     }));
   }
+
 
   async function handleEdit(id){
     if(!userState.user) return;
@@ -166,7 +172,7 @@ export default function App() {
      <section>
       <form className="post-form" onSubmit={handleSubmit}>
           <label>
-            <input className="new-post" name="post" value={postState.newPost.post} onChange={handleChange}/>
+            <input className="new-post" name="post" value={postState.newPost.post} onChange={handleChange} />
           </label>
           <button className="post-button" disabled={!userState.user}>{postState.editMode ? 'EDIT POST' : 'POST'}</button>
       </form>
@@ -184,7 +190,12 @@ export default function App() {
           onClick={() => handleDelete(p._id)}>
             {'🗑'}
           </button>
-          <Comments post={postState.posts} user={userState.user}/>
+          <form className="add-comment-form" onSubmit={handleCommentSubmit}>
+            <label>Comment:
+            <input  name="comment" method="POST" value={postState.newPost.comments.comment} onChange={handleChange}/>
+            </label>
+            <button className="comment-button" disabled={!userState.user}>{'POST'}</button>
+        </form>
        </article>
       )) : 
         <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>

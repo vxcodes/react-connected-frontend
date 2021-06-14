@@ -17,7 +17,15 @@ async function updatePost({ post, comment,  _id }) {
       }).then(res => res.json());
 }
 
-
+// async function createComment({comments, _id}) {
+//   return fetch(`${BASE_URL}/${_id}`, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-type': 'Applications/json',
+//     },
+//     body: JSON.stringify({ comments })
+//   }).then(res => res.json());
+// }
 
 
 async function createPost(data, user) {
@@ -44,4 +52,5 @@ export {
     updatePost,
     createPost,
     deletePost,
+    // createComment
 }
