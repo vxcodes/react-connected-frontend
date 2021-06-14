@@ -2,26 +2,23 @@ const BASE_URL = 'https://react-connected-backend.herokuapp.com/api/posts';
 
 
 
-async function fetchPosts(user) {
+async function fetchPosts() {
   return fetch(BASE_URL).then(res => res.json());
 }
 
-async function updatePost({ post, _id }, user) {
+
+async function updatePost({ post, comment,  _id }) {
     return fetch(`${BASE_URL}/${_id}`, {
         method: 'PUT',
         headers: {
           'Content-type': 'Application/json',
         },
-        body: JSON.stringify({ post })
+        body: JSON.stringify({ post, comment })
       }).then(res => res.json());
 }
 
-async function createComment(data){
-  return(BASE_URL, {
-    method: 'POST',
-    body: JSON.stringify({...data})
-  }).then(res => res.json())
-}
+
+
 
 async function createPost(data, user) {
     return fetch(BASE_URL, {
@@ -47,5 +44,4 @@ export {
     updatePost,
     createPost,
     deletePost,
-    createComment,
 }

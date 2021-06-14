@@ -5,6 +5,7 @@ import Home from './pages/Home/Home'
 import Profile from './pages/Profile/Profile'
 import Post from './components/Post/Post'
 import Header from './components/Header/Header'
+import Comments from './components/Comments/Comments'
 import "./App.css";
 
 import { 
@@ -22,11 +23,13 @@ export default function App() {
   const [postState, setPost] = useState({
     posts: [],
     newPost: {
-      userName: '',
-      title: '',
       post: '',
+      comments: {
+        comment: ''
+      }
     }
   });
+
 
   const [userState, setUserState] = useState({
     user: null
@@ -42,7 +45,7 @@ export default function App() {
 
       setPost(prevState => ({
         ...prevState,
-        posts
+        posts,
       }));
     }
 
@@ -60,18 +63,22 @@ export default function App() {
   }, []);
 
   async function handleSubmit(e){
-    e.preventDefault();
+    if(!userState.user) return;
 
+    e.preventDefault();
+    
     if(postState.editMode){
       try{
         const posts = await updatePost(postState.newPost, userState.user);
+        // const comments = await updatePost(postState.newComment, userState.user);
         setPost({
           posts,
           editMode: false,
           newPost: {
-            userName: '',
-            title: '',
             post: '',
+            comments: {
+              comment: ''
+            },
           }
         });
       } catch(error) {
@@ -86,6 +93,9 @@ export default function App() {
           posts: [...postState.posts, post],
           newPost: {
             post: '',
+            comments: {
+              comment: ''
+            }
           }
         });
       } catch(error){
@@ -95,19 +105,32 @@ export default function App() {
     }
   }
 
+
+
+
+
+
+
   async function handleChange(e){
     setPost(prevState => ({
       ...prevState,
       newPost: {
         ...prevState.newPost,
-        [e.target.name]: e.target.value
-      }
+        [e.target.name]: e.target.value,
+        
+        comments: {
+          ...prevState.comments,
+          [e.target.name]: e.target.value
+        },
+      },
+
     }));
   }
 
   async function handleEdit(id){
     if(!userState.user) return;
     const postToEdit = postState.posts.find(post => post._id === id);
+
     setPost(prevState => ({
       ...prevState,
       newPost: postToEdit,
@@ -145,35 +168,29 @@ export default function App() {
           <label>
             <input className="new-post" name="post" value={postState.newPost.post} onChange={handleChange}/>
           </label>
-          <button disabled={!userState.user}>{postState.editMode ? 'EDIT POST' : 'POST'}</button>
+          <button className="post-button" disabled={!userState.user}>{postState.editMode ? 'EDIT POST' : 'POST'}</button>
       </form>
 
-        {userState.user ? postState.posts.map((p, i) => (
-          <article key={i}>
-            <Post 
-              post={p.post} comments={p.comments}
-            />
-            <button className="controls"
-            onClick={() => handleEdit(p._id)}>
-              {'📝'}
-            </button>
-            <button className="controls"
-            onClick={() => handleDelete(p._id)}>
-              {'🗑'}
-            </button>
-            <form className="add-comment-form" method="POST" action="#">
-              <label>Comment:</label>
-              <textarea name="content"></textarea>
-              <input type="submit" value="Add Comment" />
-            </form>
-          </article>
-          
-        )) : 
-          <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>
-        }
-        <hr />
+      {userState.user ? postState.posts.map((p, i) => (
+        <article className="main-post-box" key={i}>
+          <Post
+            post={p.post} comment={p.comments.comment}
+          />
+          <button className="controls"
+          onClick={() => handleEdit(p._id)}>
+            {'📝'}
+          </button>
+          <button className="controls"
+          onClick={() => handleDelete(p._id)}>
+            {'🗑'}
+          </button>
+          <Comments post={postState.posts} user={userState.user}/>
+       </article>
+      )) : 
+        <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>
+      }
+      <hr />
       </section> 
-
     </>
-  );
-}
+    );
+  }

@@ -1,0 +1,9 @@
+.commentBox {
+    display: flex;
+    position: relative;
+    top: -950px;
+    right: -500px;
+    width: 20%;
+    height: 20px;
+    border: 5px;
+}

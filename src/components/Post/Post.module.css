@@ -1,9 +1,5 @@
 
 
-.heading{
-    font-size: 14px;
-    color: hotpink;
-}
 
 .post {
     position: relative;
@@ -11,11 +7,12 @@
     top: -900px;
     height: 40px;
     width: 500px;;
+    
 }
 
 .postBox {
     position: relative;
     height: 40px;
     width: 500px;
-    border-color: grey;
+
 }
