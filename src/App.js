@@ -106,10 +106,15 @@ export default function App() {
   }
 
   async function handleCommentSubmit(e){
-    setPost(prevState => {
-      let comments = {...prevState.comments};
-      comments.comment = 'new';
-    })
+    if(!userState.user) return;
+    e.preventDefault();
+    setPost(prevState => ({
+      ...prevState,
+      newPost: {
+        ...prevState.newPost,
+
+      }
+    }));
   }
 
 
@@ -123,10 +128,6 @@ export default function App() {
         ...prevState.newPost,
         [e.target.name]: e.target.value,
         
-        comments: {
-          ...prevState.comments,
-          [e.target.name]: e.target.value
-        },
       },
 
     }));
@@ -190,12 +191,13 @@ export default function App() {
           onClick={() => handleDelete(p._id)}>
             {'🗑'}
           </button>
-          <form className="add-comment-form" onSubmit={handleCommentSubmit}>
+          <form className="add-comment-form"  onSubmit={handleCommentSubmit} >
             <label>Comment:
             <input  name="comment" method="POST" value={postState.newPost.comments.comment} onChange={handleChange}/>
             </label>
-            <button className="comment-button" disabled={!userState.user}>{'POST'}</button>
+            <button type="button" className="comment-button" disabled={!userState.user}>{'REACT'}</button>
         </form>
+        <p>{postState.newPost.comments.comment}</p>
        </article>
       )) : 
         <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>

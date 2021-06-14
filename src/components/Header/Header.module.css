@@ -1,8 +1,7 @@
-.headinglogo{
-    background-image: url('../images/connected-logo.png')
-}
+
 
 .header {
+    background-image: url('../images/connected-logo.png');
     display: flex;
     justify-content: space-between;
     align-items: center;
