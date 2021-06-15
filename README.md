@@ -11,9 +11,11 @@
 
 
 ## ERD
+![](public/erd.jpeg)
 
 ## Wireframe
 ![](public/homepage.jpeg)
+
 
 ## Get Started
 
