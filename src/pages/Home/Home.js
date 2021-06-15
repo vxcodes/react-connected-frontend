@@ -14,7 +14,6 @@ function Home(props) {
     
       useEffect(function(){
         async function getAndSetAppData() {
-          if(!props.user) return;
           const data = await fetch('https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=mGwR13rTsGscWrbPUVcKDaGbflhbVUAi')
           .then(res => res.json())
 
