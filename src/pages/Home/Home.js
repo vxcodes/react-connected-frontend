@@ -13,8 +13,8 @@ function Home(props) {
       })
     
       useEffect(function(){
-        if(!props.user) return;
         async function getAndSetAppData() {
+          if(!props.user) return;
           const data = await fetch('https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=mGwR13rTsGscWrbPUVcKDaGbflhbVUAi')
           .then(res => res.json())
 
@@ -33,7 +33,7 @@ function Home(props) {
             
             </div>
             <Sidebar className={styles.sidebar} user={props.user}/>
-            <Newsbox className={styles.newsbox} newsData={newsState}/>
+            <Newsbox className={styles.newsbox} newsData={newsState} user={props.user}/>
         </div>
 
     )
