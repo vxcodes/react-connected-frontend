@@ -1,5 +1,5 @@
 # Connected, a social media posting application
-    Connected is a social media application that allows users to perform CRUD operations on their posts and comments on other's posts. It features authentication with firebase and NYT News API.
+### Connected is a social media application that allows users to perform CRUD operations on their posts and comments on other's posts. It features authentication with firebase and NYT News API.
 
 ## Technologies 
 * MongoDB, Mongoose
