@@ -7,18 +7,18 @@ async function fetchPosts() {
 }
 
 
-async function updatePost({ post, comment,  _id }) {
-    return fetch(`${BASE_URL}/${_id}`, {
+function updatePost({ posts, comments,  uid }) {
+    return fetch(`${BASE_URL}/${uid}`, {
         method: 'PUT',
         headers: {
           'Content-type': 'Application/json',
         },
-        body: JSON.stringify({ post, comment })
+        body: JSON.stringify({ posts, comments })
       }).then(res => res.json());
 }
 
-async function createComment({comments, _id}) {
-  return fetch(`${BASE_URL}/${_id}`, {
+async function createComment({comments, uid}) {
+  return fetch(`${BASE_URL}/${uid}`, {
     method: 'PUT',
     headers: {
       'Content-type': 'Applications/json',
@@ -40,9 +40,9 @@ async function createPost(data, user) {
 }
 
 
-async function deletePost(postId, user) {
+async function deletePost(postId, uid) {
 
-    return fetch(`${BASE_URL}/${postId}`, {
+    return fetch(`${BASE_URL}/${postId}?uid=${uid}`, {
         method: 'DELETE',
     }).then(res => res.json());
 }

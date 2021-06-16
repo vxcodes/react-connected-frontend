@@ -8,6 +8,7 @@ function Post(props) {
         <>
             <div className={styles.postbox}>
                 <p className={styles.post}>{props.post}</p>
+                <p>{props.comment}</p>
             </div>
             
         </>

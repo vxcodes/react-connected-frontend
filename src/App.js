@@ -19,7 +19,11 @@ createComment } from "./services/post-service"
 // import Header from './components/Header/Header'
 
 
+
 export default function App() {
+
+  
+
   const [postState, setPost] = useState({
     posts: [],
     comments:[],
@@ -29,6 +33,7 @@ export default function App() {
     }
   });
 
+  
 
 
 
@@ -65,14 +70,13 @@ export default function App() {
 
   async function handleSubmit(e){
     if(!userState.user) return;
-
     e.preventDefault();
-    
     if(postState.editMode){
       try{
         const posts = await updatePost(postState.newPost, userState.user);
         const comments = await updatePost(postState.newPost, userState.user);
-        setPost({
+        setPost(prevState => ({
+          ...prevState,
           posts,
           comments,
           editMode: false,
@@ -80,7 +84,7 @@ export default function App() {
             post: '',
             comments: []
           }
-        });
+        }));
       } catch(error) {
 
       }
@@ -98,20 +102,22 @@ export default function App() {
           }
         });
       } catch(error){
-        //do something so users dont freak out.
-        console.log(error);
       }
     }
   }
 
+  
+
   async function handleCommentSubmit(e){
-    const comment = await createPost(postState.newPost, userState.user);
+
+
+    const comment = await updatePost(postState.newPost, userState.user);
 
     setPost({
       posts: [...postState.posts],
       comments: [...postState.comments],
       newPost: {
-        post: '',
+        post: [...postState.posts],
         comments: [...postState.comments, comment]
       }
     });
@@ -131,13 +137,24 @@ export default function App() {
   //     comments: [...postState.newPost.comments, comment],
   //     newPost: {
   //       post: '',
-  //       comments: []
+  //       comments: [comment]
   //     }
   //   });
   // }
 
 
   async function handleChange(e){
+    setPost(prevState => ({
+      ...prevState,
+      newPost: {
+        ...prevState.newPost,
+        [e.target.name]: e.target.value,
+        
+      },
+
+    }));
+  }
+  async function handleCommentChange(e){
     setPost(prevState => ({
       ...prevState,
       newPost: {
@@ -197,29 +214,30 @@ export default function App() {
       {userState.user ? postState.posts.map((p, i) => (
         <article className="main-post-box" key={i}>
           <Post
-            post={p.post} comment={p.comments.comment}
+            post={p.post} comment={p.comments}
           />
-          <button className="controls"
+          <button 
+          className="controls"
           onClick={() => handleEdit(p._id)}>
             {'📝'}
           </button>
-          <button className="controls"
+          <button
+          className="controls"
           onClick={() => handleDelete(p._id)}>
             {'🗑'}
           </button>
           <form className="add-comment-form"  onSubmit={handleCommentSubmit} >
             <label>Comment:
-            <input  name="comment" method="PUT" value={postState.newPost.comments.comment} onChange={handleChange}/>
+            <input  name="comment" method="PUT" value={postState.newPost.comments} onChange={handleCommentChange}/>
             </label>
-            <button type="button" className="comment-button" disabled={!userState.user}>{'REACT'}</button>
+            <button className="comment-button" disabled={!userState.user}>{'REACT'}</button>
           </form>
-          <>
           {userState.user ? postState.comments.map((c, i) => (
             <p>{c.comment}</p>
           )):
             <article>No Comments</article>
           }
-          </>
+
 
        </article>
       )) : 
