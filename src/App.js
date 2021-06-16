@@ -11,7 +11,8 @@ import {
   fetchPosts,
   updatePost,
   createPost,
-  deletePost } from "./services/post-service"
+  deletePost,
+createComment } from "./services/post-service"
 
 
 
@@ -21,11 +22,10 @@ import {
 export default function App() {
   const [postState, setPost] = useState({
     posts: [],
+    comments:[],
     newPost: {
       post: '',
-      comments: {
-        comment: ''
-      }
+      comments: []
     }
   });
 
@@ -71,14 +71,14 @@ export default function App() {
     if(postState.editMode){
       try{
         const posts = await updatePost(postState.newPost, userState.user);
+        const comments = await updatePost(postState.newPost, userState.user);
         setPost({
           posts,
+          comments,
           editMode: false,
           newPost: {
             post: '',
-            comments: {
-              comment: ''
-            },
+            comments: []
           }
         });
       } catch(error) {
@@ -91,11 +91,10 @@ export default function App() {
 
         setPost({
           posts: [...postState.posts, post],
+          comments: [...postState.comments],
           newPost: {
             post: '',
-            comments: {
-              comment: ''
-            }
+            comments: []
           }
         });
       } catch(error){
@@ -106,19 +105,36 @@ export default function App() {
   }
 
   async function handleCommentSubmit(e){
-    if(!userState.user) return;
-    e.preventDefault();
-    setPost(prevState => ({
-      ...prevState,
-      newPost: {
-        ...prevState.newPost,
+    const comment = await createPost(postState.newPost, userState.user);
 
+    setPost({
+      posts: [...postState.posts],
+      comments: [...postState.comments],
+      newPost: {
+        post: '',
+        comments: [...postState.comments, comment]
       }
-    }));
+    });
   }
 
+  // async function handleCommentSubmit(e){
+  //   this.setPost({
+  //     comments: this.postState.newPost.comments.concat(e.target.value)
+  //   })
+  // }
 
-
+  // async function handleCommentChange(e){
+  //   const post = await createPost(postState.newPost, userState.user);
+  //   const comment = await createComment(postState.newPost.comments, userState.user);
+  //   setPost({
+  //     posts: [...postState.posts],
+  //     comments: [...postState.newPost.comments, comment],
+  //     newPost: {
+  //       post: '',
+  //       comments: []
+  //     }
+  //   });
+  // }
 
 
   async function handleChange(e){
@@ -193,11 +209,18 @@ export default function App() {
           </button>
           <form className="add-comment-form"  onSubmit={handleCommentSubmit} >
             <label>Comment:
-            <input  name="comment" method="POST" value={postState.newPost.comments.comment} onChange={handleChange}/>
+            <input  name="comment" method="PUT" value={postState.newPost.comments.comment} onChange={handleChange}/>
             </label>
             <button type="button" className="comment-button" disabled={!userState.user}>{'REACT'}</button>
-        </form>
-        <p>{postState.newPost.comments.comment}</p>
+          </form>
+          <>
+          {userState.user ? postState.comments.map((c, i) => (
+            <p>{c.comment}</p>
+          )):
+            <article>No Comments</article>
+          }
+          </>
+
        </article>
       )) : 
         <article style={{padding: 15}}>No Posts to Show - Login to Get Started</article>
