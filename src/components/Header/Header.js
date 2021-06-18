@@ -18,7 +18,10 @@ function Header(props){
                     {
                         props.user ?
                         <>
-                        <Link className={styles.navLink} to="/">
+                        <Link className={styles.navLink} to="/main">
+                            <li>Main</li>
+                        </Link>
+                        <Link className={styles.navLink} to="/home">
                             <li>Home</li>
                         </Link>
                         <Link className={styles.navLink} to="/profile">

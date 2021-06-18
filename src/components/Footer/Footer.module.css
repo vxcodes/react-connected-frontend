@@ -1,0 +1,11 @@
+footer {
+    background-color: pink;
+    height: 150px;
+    width: 100%;
+    text-align: center;
+    text-anchor: end;
+}
+
+.footerBottom {
+    text-align:center;
+}

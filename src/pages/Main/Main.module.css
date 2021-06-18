@@ -1,0 +1,17 @@
+.main{
+    background-color:hotpink;
+    height: 50vh;
+    text-align: center;
+}
+
+
+
+.cards{
+    background-color: khaki;
+    height: 400px;
+}
+
+
+.carousel {
+    height: 100px;
+}
