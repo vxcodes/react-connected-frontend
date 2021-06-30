@@ -16,7 +16,7 @@ import {
 function Header(props) {
   return (
     <header className={styles.header}>
-      <h1 className={styles.headinglogo}>{'⚛︎'} React Connected</h1>
+      <h1 className={styles.headinglogo}>{'⚛︎'} Connected</h1>
       <nav>
         <ul>
           {props.user ? (
