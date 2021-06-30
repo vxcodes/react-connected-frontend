@@ -1,17 +1,19 @@
-import React from 'react'
-import styles from './Newsbox.module.css'
+import React from 'react';
+import styles from './Newsbox.module.css';
 
 export default function Newsbox(props) {
-    return (
+  return (
+    <div>
+      <div className={styles.newsbox}>
+        <h1 className={styles.title}>News Headlines</h1>
         <div>
-            <div className={styles.newsbox}>
-                <h1 className={styles.title}>News Headlines</h1>
-                <div>
-                    {
-                        props.newsData.results.map(headline => <div className={styles.form} ><a href={headline.url}>{headline.title}</a></div>)
-                    }
-                </div>
+          {props.newsData.results.map((headline) => (
+            <div className={styles.form}>
+              <a href={headline.url}>{headline.title}</a>
             </div>
+          ))}
         </div>
-    )
+      </div>
+    </div>
+  );
 }

@@ -1,19 +1,19 @@
 .heading {
-    text-align: center;
-    position: relative;
+  text-align: center;
+  position: relative;
 }
 
-.sidebar{
-    height: 100px;
-    width: 100px;
+.sidebar {
+  height: 100px;
+  width: 100px;
 }
 
 .newsbox {
-    font-size: small;
-    height: 1070px;
-    width: 300px;
-    border-style:hidden;
-    position: relative;
-    right: -1600px;
-    top: -600px;
+  font-size: small;
+  height: 1070px;
+  width: 300px;
+  border-style: hidden;
+  position: relative;
+  right: -1600px;
+  top: -600px;
 }
