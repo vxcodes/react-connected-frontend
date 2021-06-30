@@ -1,7 +1,8 @@
 .main {
   background-color: hotpink;
   height: 70vh;
-  text-align: bottom;
+  padding-top: 600px;
+  text-align: center;
   font-size: 25px;
 }
 
@@ -10,7 +11,7 @@
   grid-template-columns: 500px 500px 500px;
   padding-left: 200px;
   font-size: 20px;
-  background-color: indianred;
+  background-color: honeydew;
   height: 50vh;
   text-align: center;
 }
