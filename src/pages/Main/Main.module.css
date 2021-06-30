@@ -17,10 +17,13 @@
 }
 
 .card {
-  padding-right: 90px;
+  padding-right: 40px;
+  padding-left: 40px;
 }
 
 .carousel {
-  height: 90px;
+  position: relative;
+  top: 90px;
+  height: 70px;
   width: 100%;
 }
