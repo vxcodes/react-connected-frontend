@@ -9,16 +9,15 @@
 .cards {
   display: grid;
   grid-template-columns: 500px 500px 500px;
-  padding-left: 200px;
   font-size: 20px;
   background-color: honeydew;
-  height: 50vh;
+  height: 60vh;
   text-align: center;
 }
 
 .card {
-  padding-right: 40px;
-  padding-left: 40px;
+  padding-right: 50px;
+  padding-left: 50px;
 }
 
 .carousel {

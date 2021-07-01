@@ -30,6 +30,9 @@ function Header(props) {
               <Link className={styles.navLink} to="/profile">
                 <li>Profile</li>
               </Link>
+              <Link className={styles.navLink} to="/messages">
+                <li>Messages</li>
+              </Link>
               <li>Welcome, {props.user.displayName}</li>
               <li>
                 <img

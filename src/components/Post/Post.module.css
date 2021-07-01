@@ -1,18 +1,13 @@
-
-
-
 .post {
-    position: relative;
-    padding-left: 475px;
-    top: -900px;
-    height: 40px;
-    width: 500px;;
-    
+  position: relative;
+  padding-left: 475px;
+  top: -900px;
+  height: 40px;
+  width: 500px;
 }
 
 .postBox {
-    position: relative;
-    height: 40px;
-    width: 500px;
-
+  position: relative;
+  height: 40px;
+  width: 500px;
 }

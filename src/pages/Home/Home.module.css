@@ -9,11 +9,23 @@
 }
 
 .newsbox {
-  font-size: small;
+  font-size: medium;
   height: 1070px;
   width: 300px;
   border-style: hidden;
   position: relative;
-  right: -1600px;
+  left: -1100px;
   top: -600px;
+}
+
+.postForm {
+  position: relative;
+  padding-left: 475px;
+  top: -1630px;
+  height: 40px;
+  width: 500px;
+}
+
+.postButton {
+  align-content: center;
 }

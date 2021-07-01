@@ -37,7 +37,7 @@ export default function Carousel({ slides }) {
             {index === current && (
               <img
                 src={slide.image}
-                alt='connected image'
+                alt="connected image"
                 className={styles.image}
               />
             )}

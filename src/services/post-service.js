@@ -4,13 +4,13 @@ async function fetchPosts() {
   return fetch(BASE_URL).then((res) => res.json());
 }
 
-function updatePost({ posts, comments, uid }) {
-  return fetch(`${BASE_URL}/${uid}`, {
+function updatePost({ post, comments, _id }) {
+  return fetch(`${BASE_URL}/${_id}`, {
     method: 'PUT',
     headers: {
       'Content-type': 'Application/json',
     },
-    body: JSON.stringify({ posts, comments }),
+    body: JSON.stringify({ post, comments }),
   }).then((res) => res.json());
 }
 

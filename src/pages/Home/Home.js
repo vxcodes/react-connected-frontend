@@ -52,7 +52,6 @@ function Home(props) {
           editMode: false,
           newPost: {
             post: '',
-            comments: [],
           },
         });
       } catch (error) {}
@@ -75,7 +74,7 @@ function Home(props) {
 
   async function handleCommentSubmit(e) {
     const comment = await updatePost(postState.newPost, props.user);
-
+    const posts = await updatePost(postState.newPost, props.user);
     setPost({
       posts: [...postState.posts],
       comments: [...postState.comments],
@@ -161,7 +160,7 @@ function Home(props) {
         />
       </div>
       <section>
-        <form className="post-form" onSubmit={handleSubmit}>
+        <form className={styles.postForm} onSubmit={handleSubmit}>
           <label>
             <input
               className="new-post"
@@ -170,7 +169,7 @@ function Home(props) {
               onChange={handleChange}
             />
           </label>
-          <button className="post-button" disabled={!props.user}>
+          <button className={styles.postButton} disabled={!props.user}>
             {postState.editMode ? 'EDIT POST' : 'POST'}
           </button>
         </form>
