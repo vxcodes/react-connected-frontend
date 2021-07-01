@@ -22,19 +22,21 @@ function Home(props) {
       post: '',
       comments: [],
     },
+    editMode: false,
   });
 
   useEffect(function () {
     async function getAppData() {
       if (!props.user) return;
 
-      const posts = await fetchPosts(props.user).then((res) => res.json());
+      const posts = await fetchPosts(props.user);
 
       setPost((prevState) => ({
         ...prevState,
         posts,
       }));
     }
+    getAppData();
   });
 
   async function handleSubmit(e) {
@@ -44,8 +46,7 @@ function Home(props) {
       try {
         const posts = await updatePost(postState.newPost, props.user);
         const comments = await updatePost(postState.newPost, props.user);
-        setPost((prevState) => ({
-          ...prevState,
+        setPost({
           posts,
           comments,
           editMode: false,
@@ -53,7 +54,7 @@ function Home(props) {
             post: '',
             comments: [],
           },
-        }));
+        });
       } catch (error) {}
     } else {
       // Create a new skill
@@ -85,7 +86,7 @@ function Home(props) {
     });
   }
 
-  async function handleChange(e) {
+  function handleChange(e) {
     setPost((prevState) => ({
       ...prevState,
       newPost: {
@@ -94,7 +95,7 @@ function Home(props) {
       },
     }));
   }
-  async function handleCommentChange(e) {
+  function handleCommentChange(e) {
     setPost((prevState) => ({
       ...prevState,
       newPost: {
@@ -104,7 +105,7 @@ function Home(props) {
     }));
   }
 
-  async function handleEdit(id) {
+  function handleEdit(id) {
     if (!props.user) return;
     const postToEdit = postState.posts.find((post) => post._id === id);
 
@@ -160,41 +161,41 @@ function Home(props) {
         />
       </div>
       <section>
-        <form className='post-form' onSubmit={handleSubmit}>
+        <form className="post-form" onSubmit={handleSubmit}>
           <label>
             <input
-              className='new-post'
-              name='post'
+              className="new-post"
+              name="post"
               value={postState.newPost.post}
               onChange={handleChange}
             />
           </label>
-          <button className='post-button' disabled={!props.user}>
+          <button className="post-button" disabled={!props.user}>
             {postState.editMode ? 'EDIT POST' : 'POST'}
           </button>
         </form>
 
         {props.user ? (
           postState.posts.map((p, i) => (
-            <article className='main-post-box' key={i}>
+            <article className="main-post-box" key={i}>
               <Post post={p.post} comment={p.comments} />
-              <button className='controls' onClick={() => handleEdit(p._id)}>
+              <button className="controls" onClick={() => handleEdit(p._id)}>
                 {'📝'}
               </button>
-              <button className='controls' onClick={() => handleDelete(p._id)}>
+              <button className="controls" onClick={() => handleDelete(p._id)}>
                 {'🗑'}
               </button>
-              <form className='add-comment-form' onSubmit={handleCommentSubmit}>
+              <form className="add-comment-form" onSubmit={handleCommentSubmit}>
                 <label>
                   Comment:
                   <input
-                    name='comment'
-                    method='PUT'
+                    name="comment"
+                    method="PUT"
                     value={postState.newPost.comments}
                     onChange={handleCommentChange}
                   />
                 </label>
-                <button className='comment-button' disabled={!props.user}>
+                <button className="comment-button" disabled={!props.user}>
                   {'REACT'}
                 </button>
               </form>
